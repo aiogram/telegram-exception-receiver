@@ -32,5 +32,4 @@ class TelegramException(BaseModel):
     async def get_all(cls):
         db = mongo.get_database().get_collection("exceptions")
         all_data = await db.find({}).to_list(length=None)
-        print(all_data)
         return [cls(**data).dict(exclude={CREATED, UPDATED}) for data in all_data]
