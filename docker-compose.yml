@@ -1,9 +1,14 @@
-version: '3.7'
+version: '3.8'
 
 services:
-  exc-receiver:
+  app:
     build:
       context: .
     restart: always
-    expose:
-      - 3000
+    ports:
+    - "127.0.0.1:3000:3000"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
