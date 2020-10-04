@@ -1,0 +1,9 @@
+web_server:
+  host: 0.0.0.0
+  port: 3000
+  debug: off
+  access_log: off
+
+
+mongo:
+  uri: mongodb://<login>:<password>@<host>>:<port>/?<other params>
