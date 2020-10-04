@@ -19,7 +19,7 @@ class TelegramException(BaseModel):
 
     async def save(self):
         db = mongo.get_database().get_collection("exceptions")
-        now = datetime.now().isoformat()
+        now = datetime.now()
         search = self.dict(exclude={CREATED, UPDATED})
         update = {
             "$set": {UPDATED: now},
