@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  exc-receiver:
+    build:
+      context: .
+    restart: always
+    expose:
+      - 3000
