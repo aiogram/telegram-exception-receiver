@@ -32,6 +32,23 @@ async def test_post(test_cli: TestClient):
     assert resp.status == 200
 
 
+async def test_posts(test_cli: TestClient):
+    data = [
+        {
+            "code": 402,
+            "name": 'BadRequest',
+            "description": 'Something went wrong again!',
+        },
+        {
+            "code": 403,
+            "name": 'VeryBadRequest',
+            "description": 'Something went absolutely wrong!',
+        },
+    ]
+    resp = await test_cli.post(PATH, json=data)
+    assert resp.status == 200
+
+
 async def test_get(test_cli: TestClient):
     resp = await test_cli.get(PATH)
     assert resp.status == 200
