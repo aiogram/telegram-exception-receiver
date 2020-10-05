@@ -1,4 +1,3 @@
-import asyncio
 from asyncio import AbstractEventLoop
 
 from sanic import Sanic
