@@ -1,7 +1,8 @@
 aiocache==0.11.1
-sanic==20.9.0
 motor==2.3.0
+pydantic==1.6.1
 pymongo[srv]==3.11.0
 PyYAML==5.3.1
-pydantic==1.6.1
-ujson
+sanic==20.9.0
+ujson==3.2.0
+uvloop==0.14.0
