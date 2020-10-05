@@ -1,7 +1,7 @@
 import logging
 
 import pytest  # noqa
-from pytest_sanic.utils import TestClient
+from pytest_sanic.utils import TestClient as Client
 
 from app import web_app
 from app.core import mongo
@@ -22,7 +22,7 @@ async def test_cli_fixture(app, sanic_client):
     return await sanic_client(app)
 
 
-async def test_post(test_cli: TestClient):
+async def test_post(test_cli: Client):
     data = {
         "code": 400,
         "name": 'BadRequest',
@@ -32,7 +32,7 @@ async def test_post(test_cli: TestClient):
     assert resp.status == 200
 
 
-async def test_posts(test_cli: TestClient):
+async def test_posts(test_cli: Client):
     data = [
         {
             "code": 402,
@@ -49,7 +49,7 @@ async def test_posts(test_cli: TestClient):
     assert resp.status == 200
 
 
-async def test_get(test_cli: TestClient):
+async def test_get(test_cli: Client):
     resp = await test_cli.get(PATH)
     assert resp.status == 200
     print(await resp.json())
