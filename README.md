@@ -16,7 +16,8 @@ Receive and store actual Telegram exceptions
 ```
 
 ## Post Json Example
-To post an exception send POST request to `http://{host}/exception` path
+To post an exception send POST request with json object to `http://{host}/exception` path.
+E.g:
 ```json
 {
     "code": 400,
@@ -24,7 +25,7 @@ To post an exception send POST request to `http://{host}/exception` path
     "description": "Something went wrong!"
 }
 ```
-or list of objects:
+Also you can send a list of objects. E.g:
 ```json
 [
     {
