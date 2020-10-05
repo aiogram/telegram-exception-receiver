@@ -13,7 +13,7 @@ class ExceptionView(HTTPMethodView):
     async def post(self, request: Request):
         data = request.json
         if isinstance(data, list):
-            unique_data = set(data)
+            unique_data = self._remove_duplicates(data)
             for obj in unique_data:
                 self._process_exception(obj)
         else:
@@ -33,3 +33,7 @@ class ExceptionView(HTTPMethodView):
             raise InvalidUsage(f"Data validation failed: {e}")
 
         asyncio.create_task(exception.save())
+
+    @staticmethod
+    def _remove_duplicates(data):
+        return [dict(s) for s in set(frozenset(d.items()) for d in data)]
