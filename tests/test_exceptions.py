@@ -1,3 +1,4 @@
+import asyncio
 import logging
 
 import pytest  # noqa
@@ -14,6 +15,7 @@ PATH = '/exception'
 @pytest.yield_fixture(name='app')
 async def app_fixture():
     yield web_app
+    await asyncio.sleep(3)
     mongo.close()
 
 
