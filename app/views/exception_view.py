@@ -13,7 +13,8 @@ class ExceptionView(HTTPMethodView):
     async def post(self, request: Request):
         data = request.json
         if isinstance(data, list):
-            for obj in data:
+            unique_data = set(data)
+            for obj in unique_data:
                 self._process_exception(obj)
         else:
             self._process_exception(data)
